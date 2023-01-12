@@ -21,21 +21,11 @@ app.use(jsonParser);
 
 
 app.post('/chatbot', (req, res) => {
-    // axios.get(`http://numbersapi.com/42?type=trivia`).then(response => {
-    //     res.json({
-    //         text: response.data
-    //     })
 
-    // })
-    // .catch(error => {
-    //     res.json({
-    //         text: "something is wrong"
-    //     })
-    // })
     const message = req.body.message;
     const number = message.match(/\d+/);
     if (number){
-        axios.get(`http://numbersapi.com/42?type=trivia`).then(response => {
+        axios.get(`http://numbersapi.com/${number}?type=trivia`).then(response => {
             res.json({
                 text: response.data
             })
